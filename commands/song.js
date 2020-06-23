@@ -74,13 +74,18 @@ let commandQueue = {
     name: 'queue',
     description: 'check queue',
     execute(msg, args) {
-        var embed = new MessageEmbed()
-            .setImage(msg.channel.guild.iconURL)
-            .setColor('RANDOM')
-            .setAuthor('ลำดับคิวเพลงขณะนี้', msg.channel.guild.iconURL)
-            .setTimestamp()
-            .addField("ลำดับเพลง", queue)
-        msg.reply(embed).catch()
+        try {
+            var embed = new MessageEmbed()
+                .setImage(msg.channel.guild.iconURL)
+                .setColor('RANDOM')
+                .setAuthor('ลำดับคิวเพลงขณะนี้', msg.channel.guild.iconURL)
+                .setTimestamp()
+                .addField("ลำดับเพลง", queue)
+            msg.reply(embed).catch()
+        } catch (error) {
+            msg.reply("queue ผิดพลาด ไม่สามารถเช็คได้").catch()
+        }
+
     },
 };
 
