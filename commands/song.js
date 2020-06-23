@@ -5,7 +5,7 @@ let dispatcher;
 
 function Play(connection, message) {
     dispatcher = connection.play(YTDL(queue[0]), { filter: "audioonly" })
-    dispatcher.on("end", function () {
+    dispatcher.on("finish", function () {
         queue.shift();
         console.log(queue)
         if (queue[0]) {
